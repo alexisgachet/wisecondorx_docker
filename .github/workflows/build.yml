@@ -1,0 +1,26 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+      
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Build
+        run: docker build . -t ghcr.io/alexisgachet/wisecondorx:latest
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to docker
+        run: docker push ghcr.io/alexisgachet/wisecondorx:latest
