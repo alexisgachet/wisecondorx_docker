@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Tool location
+wisecondorx=/usr/local/bin/WisecondorX
+
+npz_outdir=/home/serviceengineer/menucnv/npz_output
+sample_basename=`basename ${1%.bam}`
+
+echo -ne "Beginning processing for $1."
+
+$wisecondorx convert "$1" "$npz_outdir/$sample_basename.npz"

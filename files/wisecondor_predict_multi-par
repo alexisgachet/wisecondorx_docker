@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Tool location
+wisecondorx=/usr/local/bin/WisecondorX
+
+# Other set-up
+ref_file=/home/serviceengineer/menucnv/ref_data/reference_unaff-8-removed.npz
+results_dir=/home/serviceengineer/menucnv/results
+sample_basename=`basename ${1%.npz}`
+
+echo -ne "Beginning processing for $1."
+
+mkdir -p $results_dir/$sample_basename
+$wisecondorx predict "$1" "$ref_file" $results_dir/$sample_basename/$sample_basename --plot --bed
