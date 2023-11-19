@@ -2,7 +2,6 @@
 
 #statements
 . color.sh
-. readme.sh
 . installation.sh
 . configuration.sh
 . analysis.sh

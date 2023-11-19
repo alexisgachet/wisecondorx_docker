@@ -9,8 +9,8 @@ RUN mkdir /home/script \
     && mkdir /home/input \
     && mkdir /home/output
 
-COPY ./files/run.sh /home/script/ 
+COPY ./files/* /home/script/ 
 
-RUN chmod +x /home/script/run.sh
+RUN chmod +x /home/script/menucnv.sh
 
-CMD [ "/home/script/run.sh" ]
+CMD [ "/home/script/menucnv.sh" ]
